@@ -67,8 +67,9 @@ public class Main {
                 }
             } else if (operator.equals("*")) {
                 try {
-                    int n = Integer.parseInt(b);
-                    String result = multiply(a, n);
+                   // int n = Integer.parseInt(b);
+                    int n = Integer.parseInt(secondOperand);
+                    String result = multiply(firstOperand, n);
 
                     if (result.length() > 40) {
                         System.out.println("Результат: \"" + result.substring(0, 40) + "..." + "\"");
