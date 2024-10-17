@@ -16,7 +16,6 @@ public class Main {
             String firstOperand = matcher.group(1);
             String operator = matcher.group(2);
             String secondOperand = matcher.group(3);
-            secondOperand = secondOperand.replaceAll("\"", "");
 
 
             String[] parts = input.split("[+*/-]");
@@ -30,7 +29,7 @@ public class Main {
             String b = parts[1].replaceAll("\"", "");
 
 
-            if (a.length() > 10 || b.length() > 10) {
+            if (a.length() > 10 || b.length() > 10 || firstOperand.length() > 10 || secondOperand.length() > 10) {
                 System.out.println("Строка должна быть длиной не более 10 символов.");
                 return;
             }
@@ -80,10 +79,12 @@ public class Main {
                     System.out.println("Ошибка: '" + b + "' не является допустимым числом.");
                 }
             } else if (operator.equals("-")) {
+                secondOperand = secondOperand.replaceAll("\"", "");
                 String result = minus(firstOperand, secondOperand);
                 System.out.println("Результат: " + result);
             }
-        }
+        } else
+            System.out.println("Первым аргументом должна быть строка, а не число.");
 
 
 
