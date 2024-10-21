@@ -53,21 +53,35 @@ public class Main {
             } catch (NumberFormatException ex) {
             }
 
+
+            int n;
             if (operator.equals("+")) {
                 String result = plus(a, b);
                 System.out.println("Результат: " + result);
             } else if (operator.equals("/")) {
+
                 try {
-                    int n = Integer.parseInt(parts[1]);
-                    String result = division(a, n);
+                    n = Integer.parseInt(secondOperand);
+                    if (n < 1 || n > 10) {
+                        System.out.println("Число B должно быть в диапазоне от 1 до 10.");
+                        return;
+                    } else {
+                    String result = division(firstOperand, n);
                     System.out.println("Результат: " + "\"" + result + "\"");
+                    }
                 } catch (NumberFormatException e) {
-                    System.out.println("Ошибка: строка '" + b + "' не является числом.");
+                    System.out.println("Ошибка: строка '" + secondOperand + "' не является числом.");
                 }
             } else if (operator.equals("*")) {
                 try {
                    // int n = Integer.parseInt(b);
-                    int n = Integer.parseInt(secondOperand);
+                    n = Integer.parseInt(secondOperand);
+                    if (n < 1 || n > 10) {
+                        System.out.println("Второй множитель должен быть в диапазоне от 1 до 10.");
+                        return;
+                    } else {
+
+
                     String result = multiply(firstOperand, n);
 
                     if (result.length() > 40) {
@@ -75,8 +89,9 @@ public class Main {
                     } else {
                         System.out.println("Результат: " +  "\"" + result + "\"");
                     }
+                    }
                 } catch (NumberFormatException e) {
-                    System.out.println("Ошибка: '" + b + "' не является допустимым числом.");
+                    System.out.println("Ошибка: '" + secondOperand + "' не является допустимым числом.");
                 }
             } else if (operator.equals("-")) {
                 secondOperand = secondOperand.replaceAll("\"", "");
